@@ -23,10 +23,8 @@ export default class NewBill {
     const fileName = filePath[filePath.length-1]
 
     // Fixe ticket 3 issue (file condition)
-
-    // add "accept" attribute in html or if + regex
     
-    // if (fileName.match(/\.(jpg|jpeg|png)$/)) {
+    if (fileName.match(/\.(jpg|jpeg|png)$/)) {
       const formData = new FormData()
       const email = JSON.parse(localStorage.getItem("user")).email
       formData.append('file', file)
@@ -46,9 +44,9 @@ export default class NewBill {
           this.fileUrl = fileUrl
           this.fileName = fileName
         }).catch(error => console.error(error))
-    // }else {
-    //   alert("Veuillez choisir un fichier de type jpg, jpeg ou png.");
-    // }
+    }else {
+      alert("Veuillez choisir un fichier de type jpg, jpeg ou png.");
+    }
   }
 
   handleSubmit = e => {

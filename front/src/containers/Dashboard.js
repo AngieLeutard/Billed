@@ -153,6 +153,7 @@ export default class {
       
       // $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
       $(`#status-bills-container${this.index} #open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills));
+      console.log(this.index)
 
     })
 
