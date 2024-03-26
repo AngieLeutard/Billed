@@ -40,4 +40,26 @@ describe("Given I am connected as an employee", () => {
 
 // test d'intégration GET
 
+describe("Given I am a user connected as Employee", () => {
+  describe("When I navigate to Bills", () => {
+    test("fetches bills from mock API GET", async () => {
+      localStorage.setItem("user", JSON.stringify({ type: "Employee", email: "a@a" }));
+
+      const root = document.createElement("div")
+      root.setAttribute("id", "root")
+      document.body.append(root)
+      router()
+
+      window.onNavigate(ROUTES_PATH.Dashboard)
+
+      await waitFor(() => screen.getByText("Mes notes de frais"))
+
+      const amount  = await screen.getByText("Montant")
+      expect(amount).toBeTruthy()
+
+      const state  = await screen.getByText("Statut")
+      expect(state).toBeTruthy()
+    })
+  })
+})
 
